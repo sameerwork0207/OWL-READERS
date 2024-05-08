@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Club - Recommended Books</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            position: relative; /* Added */
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #cbcac9; /* Gold color */
+        }
+        h2 {
+            font-size: 36px;
+            margin-top: 40px;
+            color: #dae1e6; /* Steel Blue color */
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-size: 24px;
+            color: #fafaf9; /* Tomato color */
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4caf50; /* Green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049; /* Darker green color on hover */
+        }
+        ul {
+            
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        li a {
+            color: #54a4e5; 
+            text-decoration: none; 
+            border-bottom: 1px solid #54a4e5; 
+        }
+        li a:hover {
+            color: #54a4e5;
+        }
+        .book-image {
+            position: absolute; /* Added */
+            top: 0; /* Adjust as needed */
+            left: 0; /* Adjust as needed */
+            width: 100px;
+            height: auto;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .book-image:hover {
+            transform: scale(1.1); /* Increase size on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Book Club!</h1>
+    <form action="/" method="POST">
+        <label for="genre">Enter your preferred genre:</label>
+        <input type="text" id="genre" name="genre">
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Recommended Books in the {{ genre }} genre:</h2>
+    <ul>
+        {% for book in books %}
+        <li><a href="https://www.google.com/search?q={{ book.title }}" target="_blank">{{ book.title }}</a> by {{ book.author }}</li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>
